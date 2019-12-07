@@ -1,0 +1,37 @@
+
+	
+	public void shangpinTongji() throws Exception {
+
+		String sdate=request.getParameter("sdate");
+		String edate=request.getParameter("edate");
+		String userId=request.getParameter("userId");
+		List<Integer> shangpinIds = new ArrayList<Integer>();
+		List<String> shangpinNames = new ArrayList<String>();
+		List<Integer> shangpinZongshus = new ArrayList<Integer>();
+		List<Shangpin> shangpins = new ArrayList<Shangpin>();
+		Integer zongshukucun = 0;
+		Shangpin shangpin = new Shangpin();
+		if (StringUtil.isNotEmpty(userId)) {
+			shangpin.setUserId(Integer.parseInt(userId));
+		}
+		try {
+			shangpins = shangpinService.queryShangpins(null, null,sdate,edate);
+			for(int i=0;i<shangpins.size();i++){
+				shangpinIds.add(shangpins.get(i).getShangpinId());
+				shangpinNames.add(shangpins.get(i).getShangpinName());
+				Integer shangpinZongshu = 0;
+				shangpinZongshu = shangpinZongshu + shangpins.get(i).getShangpinZong();
+				zongshukucun = zongshukucun + shangpinZongshu;
+				shangpinZongshus.add(shangpinZongshu);
+			}
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("shangpinNames", shangpinNames);
+			session.setAttribute("shangpinZongshus", shangpinZongshus);
+			session.setAttribute("zongshukucun", zongshukucun);
+			response.sendRedirect("admin/shangpintongji.jsp");	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}

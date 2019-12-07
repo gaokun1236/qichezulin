@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/jquery-easyui-1.3.3/jquery.min.js,WebRoot/frame/layui/lay/modules/mobile.js,WebRoot/js,WebRoot/frame/layui/lay/modules/laydate.js,WebRoot/fuwenben,WebRoot/frame/echarts/echarts.min.js,WebRoot/highcharts/jquery.js,WebRoot/frame/layui/lay/modules/jquery.js,WebRoot/wangzhan/js,corechart.I.js,default,WebRoot/frame/layui/layui.all.js,WebRoot/left.jsp,WebRoot/frame/layui/layui.js
+validator.Unchecked=
